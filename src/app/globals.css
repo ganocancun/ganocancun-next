@@ -2,17 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+--color-verde-principal: #4CAF50;
+--color-azul-secundario: #2196F3;
+--color-blanco: #FFFFFF;
+--color-gris-suave: #F5F5F5;
+--color-marron-suave: #8D6E63;
+--color-coral-suave: #FF8A65;
+--color-turquesa-claro: #4DD0E1;
+
+--color1: #fdfefe; /* a very light color, almost white */
+--color2: #003b50 a dark teal or deep ocean blue */
+--color3: #04dcba; /* a vibrant turquoise */
+--color4: #07a302; /* a bright green */
+--color5: #d4ba2b; /* a mustard yellow */
+--color6: #08959a; /* a medium teal */
+
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 0, 60, 82;
   --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-end-rgb: 253, 255, 255;
+
+  --color-navbar-bg: #F5F5F5; /* Light background for navbar */
+  --color-link-text: #003b50; /* Color for text links */
+
+  --color-primary-1: #4CAF50;
+  --color-secondary-1: #4caf4f1a;
+
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 253, 255, 255;
+    --background-start-rgb: 15, 75, 95;
+    --background-end-rgb: 10, 70, 90;
+
+    --color-navbar-bg: #121212; /* Dark background for navbar */
+    --color-link-text: #f5f9e9; /* Lighter color for text links in dark mode */
+
+    --color-primary-1: #4caf4f1a;
+    --color-secondary-1: #4CAF50;
+
   }
 }
 
