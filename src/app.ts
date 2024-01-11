@@ -33,34 +33,35 @@ export const appts = {
   name: "Relivator",
   debug: false,
   social: networks({
-    youtube: "@bleverse_com",
+    youtube: "@ganocancun",
     discord: "Pb8uKbwpsJ",
     facebook: "groups/bleverse",
-    twitter: "blefnk",
-    github: "blefnk",
+    twitter: "ganocancun",
+    github: "ganocancun",
   }),
 };
 
 export default appts;
 
 const links = {
-  twitter: "https://x.com/blefnk",
-  github: "https://github.com/blefnk/relivator",
-  githubAccount: "https://github.com/blefnk",
+  twitter: "https://x.com/ganocancun",
+  github: "https://github.com/ganocancun/ganocancun-next",
+  githubAccount: "https://github.com/ganocancun",
+  youtube: "https://www.youtube.com/@ganocancun",
   discord: "https://discord.gg/Pb8uKbwpsJ",
-  facebook: "https://facebook.com/groups/bleverse",
+  facebook: "https://www.facebook.com/ganocancun/",
 };
 
 export const contactConfig = {
-  email: "blefnk@gmail.com",
+  email: "info@ganocancun.com",
 };
 
-export const REPOSITORY_OWNER = "blefnk";
-export const REPOSITORY_NAME = "relivator";
+export const REPOSITORY_OWNER = "ganocancun";
+export const REPOSITORY_NAME = "ganocancun-next";
 export const REPOSITORY_URL = `https://github.com/${REPOSITORY_OWNER}/${REPOSITORY_NAME}`;
 export const DISCORD_URL = "https://discord.gg/Pb8uKbwpsJ";
 export const baseUrl = new URL(
-  env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
+  env.NEXT_PUBLIC_APP_URL ?? "http://ganocancun.com",
 );
 
 export const BASE_URL =
@@ -95,7 +96,23 @@ export const siteConfig = {
   handles: {
     twitter: "@el_ade",
   },
-  keywords: ["Ganoexcel", "Ganoderma", "Salud", "Bienestar"],
+  keywords: [
+    "Gano Excel Cancun",
+    "Productos Gano Excel",
+    "Ganoderma Lucidum",
+    "Café de bienestar Cancun",
+    "Suplementos de salud Cancun",
+    "Bienestar y nutrición Cancun",
+    "Gano café beneficios",
+    "Gano Excel oportunidad de negocio",
+    "Café saludable Cancun",
+    "Mejora de salud natural Cancun",
+    "Emprendimiento en bienestar Cancun",
+    "Gano Excel experiencias",
+    "Nutrición avanzada Cancun",
+    "Gano Excel estilo de vida",
+    "Productos Ganoderma en Cancun",
+  ],
   url: {
     base: env.NEXT_PUBLIC_APP_URL,
     author: REPOSITORY_OWNER,
@@ -103,24 +120,24 @@ export const siteConfig = {
   ogImage: `${env.NEXT_PUBLIC_APP_URL}/og-image.png`,
   mainNav: [
     {
-      title: "Lobby",
+      title: "Ganoderma",
       items: [
         {
-          title: "Products",
-          href: "/products",
-          description: "All the products we have to offer.",
+          title: "El Hongo de la Inmortalidad",
+          href: "/ganoderma-lucidum/hongo-la-inmortalidad",
+          description: "El Ganoderma Lucidum.",
           items: [],
         },
         {
-          title: "Build a Look",
-          href: "/custom/clothing",
-          description: "Build your own custom clothes.",
+          title: "¿Qué es el Ganoderma Lucidum?",
+          href: "/ganoderma-lucidum/beneficios-del-ganoderma",
+          description: "Qué es y Cuáles son sus beneficios.",
           items: [],
         },
         {
-          title: "Blog",
-          href: "/blog",
-          description: "Read our latest blog posts.",
+          title: "Ganoderma Lucidum",
+          href: "/ganoderma-lucidum/ganoderma-lucidum-dr-ruiz",
+          description: "Video Explicativo del Dr. Ruiz.",
           items: [],
         },
       ],
@@ -146,50 +163,50 @@ export const siteConfig = {
   links,
   footerNav: [
     {
-      title: "Bleverse",
+      title: "Ganoexcel",
       items: [
         {
-          title: "Community",
-          href: "https://bleverse.com",
+          title: "Ganoexcel México",
+          href: "https://www.ganoexcel.mx",
           external: true,
         },
         {
-          title: "MF Piano",
-          href: "https://mfpiano.org",
+          title: "Oficina Virtual",
+          href: "https://mexico.ganoexcel.com",
           external: true,
         },
         {
-          title: "Peresfer",
-          href: "https://peresfer.com",
+          title: "Ganoexcel US",
+          href: "https://www.ganoexcel.us",
           external: true,
         },
         {
-          title: "Relivator",
-          href: "https://relivator.bleverse.com",
+          title: "Enrique Montes",
+          href: "https://enriquemontes.com",
           external: true,
         },
       ],
     },
     {
-      title: "Help",
+      title: "Ayuda",
       items: [
         {
-          title: "Contact",
+          title: "Contacto",
           href: "/contact",
           external: false,
         },
         {
-          title: "Privacy",
+          title: "Privacidad",
           href: "/privacy",
           external: false,
         },
         {
-          title: "Terms",
+          title: "Términos",
           href: "/terms",
           external: false,
         },
         {
-          title: "About",
+          title: "Acerca de",
           href: "/about",
           external: false,
         },
@@ -199,13 +216,13 @@ export const siteConfig = {
       title: "Social",
       items: [
         {
-          title: "Github",
-          href: links.githubAccount,
+          title: "Facebook",
+          href: links.facebook,
           external: true,
         },
         {
-          title: "Discord",
-          href: links.discord,
+          title: "YoutTube",
+          href: links.youtube,
           external: true,
         },
         {
@@ -214,33 +231,8 @@ export const siteConfig = {
           external: true,
         },
         {
-          title: "Facebook",
-          href: links.facebook,
-          external: true,
-        },
-      ],
-    },
-    {
-      title: "Github",
-      items: [
-        {
-          title: "Relivator",
-          href: "https://github.com/blefnk/relivator",
-          external: true,
-        },
-        {
-          title: "Reliverse",
-          href: "https://github.com/blefnk/reliverse",
-          external: true,
-        },
-        {
-          title: "Blefnk",
-          href: "https://github.com/blefnk",
-          external: true,
-        },
-        {
-          title: "Utils",
-          href: "https://github.com/blefnk/utils",
+          title: "Github",
+          href: links.githubAccount,
           external: true,
         },
       ],
