@@ -8,8 +8,8 @@ import { Separator } from "./primitives/separator";
 
 export function FakeLoadingVariantOne() {
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="max-w-xs w-full p-4 shadow-lg rounded-lg">
+    <div className="flex h-screen items-center justify-center">
+      <div className="w-full max-w-xs rounded-lg p-4 shadow-lg">
         <div className="flex flex-col space-y-4">
           <Skeleton className="h-8 w-full" />
           <Skeleton className="h-8 w-full" />
@@ -21,56 +21,57 @@ export function FakeLoadingVariantOne() {
   );
 }
 
-export function FakeLoadingVariantTwo() {
+export function FakeLoadingVariantOneSpecial() {
   return (
-    <Shell>
-      <div className="flex h-full max-h-[100dvh] w-full flex-col gap-10 overflow-hidden pb-8 pt-6 md:py-8">
-        <div className="grid gap-10 overflow-auto">
-          x
-          <section className="flex flex-col space-y-6 overflow-auto">
-            <div className="container flex max-w-7xl flex-col gap-5">
-              <div className="space-y-3">
-                <div className="flex flex-col items-start justify-between gap-4 xs:flex-row">
-                  <div className="flex items-center space-x-4">
-                    <div className="relative h-16 w-16 overflow-hidden rounded">
-                      <div className="flex h-full items-center justify-center bg-secondary">
-                        <Icons.placeholder
-                          className="h-4 w-4 text-muted-foreground"
-                          aria-hidden="true"
-                        />
-                      </div>
-                    </div>
-                    <div className="flex flex-1 flex-col gap-2 self-start text-sm">
-                      <Skeleton className="h-4 w-32" />
-                      <Skeleton className="h-2.5 w-10" />
-                      <Skeleton className="h-2.5 w-20" />
-                    </div>
-                  </div>
-                  <Skeleton className="h-4 w-12" />
-                </div>
-                <Separator />
-              </div>
-            </div>
-            <div className="container flex max-w-7xl items-center justify-between">
-              <Skeleton className="h-4 w-16" />
-              <Skeleton className="h-4 w-20" />
-            </div>
-          </section>
-          <section
-            id="order-success-actions"
-            aria-labelledby="order-success-actions-heading"
-            className="container flex max-w-7xl items-center justify-center space-x-2.5"
-          >
-            <Skeleton className="h-8 w-24" />
-            <Skeleton className="h-8 w-16" />
-          </section>
+    <div className="flex h-screen items-center justify-center">
+      <div className="w-full max-w-xs rounded-lg p-4 shadow-lg">
+        <div className="flex flex-col space-y-4">
+          <div className="relative flex h-8 w-full">
+            <div className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/20 opacity-75" />
+            <div className="relative inline-flex h-8 w-full rounded-lg bg-primary/10" />
+          </div>
+          <div className="relative flex h-8 w-full">
+            <div className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/20 opacity-75" />
+            <div className="relative inline-flex h-8 w-full rounded-lg bg-primary/10" />
+          </div>
+          <div className="relative flex h-4 w-3/4">
+            <div className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/20 opacity-75" />
+            <div className="relative inline-flex h-4 w-3/4 rounded-lg bg-primary/10" />
+          </div>
+          <div className="relative flex h-4 w-1/2">
+            <div className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/20 opacity-75" />
+            <div className="relative inline-flex h-4 w-1/2 rounded-lg bg-primary/10" />
+          </div>
         </div>
       </div>
-    </Shell>
+    </div>
   );
 }
 
-export function FakeLoadingVariantThree() {
+function PlaceholderIcon() {
+  return (
+    <div className="relative h-16 w-16 overflow-hidden rounded">
+      <div className="flex h-full items-center justify-center bg-secondary">
+        <Icons.placeholder
+          className="h-4 w-4 text-muted-foreground"
+          aria-hidden="true"
+        />
+      </div>
+    </div>
+  );
+}
+
+function SkeletonGroup() {
+  return (
+    <div className="flex flex-1 flex-col gap-2 self-start text-sm">
+      <Skeleton className="h-4 w-32" />
+      <Skeleton className="h-2.5 w-10" />
+      <Skeleton className="h-2.5 w-20" />
+    </div>
+  );
+}
+
+export function FakeLoadingVariantTwo() {
   return (
     <Shell>
       <div className="flex items-center space-x-2">
@@ -129,12 +130,7 @@ export function FakeLoadingVariantThree() {
             <Card className="min-w-[260px] rounded-sm">
               <CardHeader className="border-b p-0">
                 <AspectRatio ratio={4 / 3}>
-                  <div className="flex h-full items-center justify-center bg-secondary">
-                    <Icons.placeholder
-                      className="h-9 w-9 text-muted-foreground"
-                      aria-hidden="true"
-                    />
-                  </div>
+                  <PlaceholderIcon />
                 </AspectRatio>
               </CardHeader>
               <CardContent className="grid gap-2.5 p-4">
@@ -155,29 +151,29 @@ export function FakeLoadingVariantThree() {
   );
 }
 
-export function FakeLoadingVariantFour() {
+export function FakeLoadingVariantThree() {
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="rounded-xl border bg-card text-card-foreground shadow w-full max-w-6xl mx-auto">
-        <div className="space-y-1.5 p-6 flex flex-col justify-between border-b items-baseline px-4">
+    <div className="flex h-screen items-center justify-center">
+      <div className="mx-auto w-full max-w-6xl rounded-xl border bg-card text-card-foreground shadow">
+        <div className="flex flex-col items-baseline justify-between space-y-1.5 border-b p-6 px-4">
           <Skeleton className="h-6 rounded" />
-          <Skeleton className="h-6 rounded w-3/4 mx-auto" />
+          <Skeleton className="mx-auto h-6 w-3/4 rounded" />
         </div>
-        <div className="p-6 pt-0 lg:p-8 container flex flex-col items-center">
-          <div className="w-full flex flex-col justify-center space-y-6">
-            <div className="flex gap-8 flex-col mx-auto mb-4 content-center">
-              <Skeleton className="h-9 rounded-md w-full" />
-              <Skeleton className="h-9 rounded-md w-full" />
-              <Skeleton className="h-9 rounded-md w-full" />
+        <div className="container flex flex-col items-center p-6 pt-0 lg:p-8">
+          <div className="flex w-full flex-col justify-center space-y-6">
+            <div className="mx-auto mb-4 flex flex-col content-center gap-8">
+              <Skeleton className="h-9 w-full rounded-lg" />
+              <Skeleton className="h-9 w-full rounded-lg" />
+              <Skeleton className="h-9 w-full rounded-lg" />
             </div>
           </div>
           <div className="space-y-8">
-            <Skeleton className="h-4 rounded w-5/6 mx-auto" />
+            <Skeleton className="mx-auto h-4 w-5/6 rounded" />
           </div>
-          <div className="flex space-y-2 flex-1 gap-4 flex-col items-center"></div>
+          <div className="flex flex-1 flex-col items-center gap-4 space-y-2" />
         </div>
-        <div className="p-6 pt-0 pl-8 text-sm justify-center items-baseline flex space-x-1 text-muted-foreground border-t">
-          <Skeleton className="h-4 rounded w-full" />
+        <div className="flex items-baseline justify-center space-x-1 border-t p-6 pl-8 pt-0 text-sm text-muted-foreground">
+          <Skeleton className="h-4 w-full rounded" />
         </div>
       </div>
     </div>

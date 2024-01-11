@@ -30,7 +30,7 @@ export function ThemesGeneralSwitcher({
       <Button
         disabled
         aria-label="Theme Switcher"
-        className="h-9 w-9 border rounded-md"
+        className="h-9 w-9 rounded-lg border"
         variant="ghost"
         size="icon"
         {...props}
@@ -45,7 +45,7 @@ export function ThemesGeneralSwitcher({
       <DropdownMenuTrigger asChild>
         <Button
           aria-label="Theme Switcher"
-          className="h-9 w-9 border rounded-md"
+          className="h-9 w-9 rounded-lg border"
           variant="ghost"
           size="icon"
           {...props}
@@ -55,19 +55,19 @@ export function ThemesGeneralSwitcher({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem className="font-heading">Theme</DropdownMenuItem>
+        <DropdownMenuItem className="font-heading">Tema</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => setTheme("dark")}>
           <Moon aria-hidden="true" className={iconClassName} />
-          <span>Dark</span>
+          <span>Obscuro</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("light")}>
           <Sun aria-hidden="true" className={iconClassName} />
-          <span>Light</span>
+          <span>Claro</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
           <Laptop aria-hidden="true" className={iconClassName} />
-          <span>System</span>
+          <span>Sistema</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

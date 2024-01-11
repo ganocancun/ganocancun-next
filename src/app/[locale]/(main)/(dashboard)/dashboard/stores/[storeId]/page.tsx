@@ -1,10 +1,11 @@
 import { type Metadata } from "next";
 import { revalidatePath } from "next/cache";
 import { notFound, redirect } from "next/navigation";
-import { Link } from "~/navigation";
 import { cn, formatDate } from "~/utils";
 import { and, eq, not } from "drizzle-orm";
+import toast from "react-hot-toast";
 
+import { getStripeAccountAction } from "~/core/stripe/actions";
 import { db } from "~/data/db";
 import { products, stores } from "~/data/db/schema";
 import { fullURL } from "~/data/meta/builder";
@@ -22,7 +23,7 @@ import { Input } from "~/islands/primitives/input";
 import { Label } from "~/islands/primitives/label";
 import { Textarea } from "~/islands/primitives/textarea";
 import { ConnectStoreToStripeButton } from "~/islands/stripe-btn-connect";
-import { getStripeAccountAction } from "~/utils/stripe/actions";
+import { Link } from "~/navigation";
 
 export const metadata: Metadata = {
   metadataBase: fullURL(),
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   description: "Manage your store",
 };
 
-interface UpdateStorePageProps {
+interface UpdateStorePageProperties {
   params: {
     storeId: string;
   };
@@ -38,7 +39,7 @@ interface UpdateStorePageProps {
 
 export default async function UpdateStorePage({
   params,
-}: UpdateStorePageProps) {
+}: UpdateStorePageProperties) {
   const storeId = Number(params.storeId);
 
   async function updateStore(fd: FormData) {
@@ -55,7 +56,8 @@ export default async function UpdateStorePage({
     });
 
     if (storeWithSameName) {
-      throw new Error("Store name already taken");
+      toast.error("Store name already taken.");
+      return;
     }
 
     await db
@@ -109,7 +111,7 @@ export default async function UpdateStorePage({
 
   return (
     <div className="space-y-6">
-      {stripeAccount ? (
+      {stripeAccount ?
         <Card
           as="section"
           id="manage-stripe-account"
@@ -159,9 +161,9 @@ export default async function UpdateStorePage({
                 name="stripeAccountCreated"
                 readOnly
                 defaultValue={
-                  stripeAccount.created
-                    ? formatDate(stripeAccount.created * 1000)
-                    : "N/A"
+                  stripeAccount.created ?
+                    formatDate(stripeAccount.created * 1000)
+                  : "N/A"
                 }
               />
             </fieldset>
@@ -182,8 +184,7 @@ export default async function UpdateStorePage({
             </Link>
           </CardFooter>
         </Card>
-      ) : (
-        <Card
+      : <Card
           as="section"
           id="connect-to-stripe"
           aria-labelledby="connect-to-stripe-heading"
@@ -200,7 +201,7 @@ export default async function UpdateStorePage({
             <ConnectStoreToStripeButton storeId={storeId} />
           </CardContent>
         </Card>
-      )}
+      }
       <Card
         as="section"
         id="update-store"
@@ -213,11 +214,7 @@ export default async function UpdateStorePage({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form
-            // eslint-disable-next-line @typescript-eslint/no-misused-promises
-            action={updateStore}
-            className="grid w-full max-w-xl gap-5"
-          >
+          <form action={updateStore} className="grid w-full max-w-xl gap-5">
             <fieldset className="grid gap-2.5">
               <Label htmlFor="update-store-name">Name</Label>
               <Input
@@ -248,11 +245,7 @@ export default async function UpdateStorePage({
                 Update store
                 <span className="sr-only">Update store</span>
               </LoadingButton>
-              <LoadingButton
-                // eslint-disable-next-line @typescript-eslint/no-misused-promises
-                formAction={deleteStore}
-                variant="destructive"
-              >
+              <LoadingButton formAction={deleteStore} variant="destructive">
                 Delete store
                 <span className="sr-only">Delete store</span>
               </LoadingButton>
