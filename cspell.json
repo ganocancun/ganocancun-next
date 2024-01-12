@@ -195,6 +195,7 @@
     "postgresjs",
     "postgresql",
     "preact",
+    "preinstall",
     "prettyful",
     "proxying",
     "PSCALE",

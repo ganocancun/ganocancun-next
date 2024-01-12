@@ -26,14 +26,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "~/islands/primitives/accordion";
-import { Button } from "~/islands/primitives/button";
 import { Separator } from "~/islands/primitives/separator";
-import { ProductImageCarousel } from "~/islands/product-carousel";
+import { ProductImageCarousel } from "~/islands/product-image-carousel";
 import { Shell } from "~/islands/wrappers/shell-variants";
 import { Link, redirect } from "~/navigation";
 import { getServerAuthSession, getUserById } from "~/utils/auth/users";
-
-import AddToCart from "./_islands/client";
 
 interface ProductPageProperties {
   params: {
@@ -88,9 +85,8 @@ export default async function ProductPage({ params }: ProductPageProperties) {
     where: eq(stores.id, Number(product.storeId)),
   });
 
-  const otherProducts =
-    store ?
-      await db
+  const otherProducts = store
+    ? await db
         .select({
           id: products.id,
           name: products.name,
@@ -141,25 +137,26 @@ export default async function ProductPage({ params }: ProductPageProperties) {
             <p className="text-base text-muted-foreground">
               {formatPrice(product.price)}
             </p>
-            {store ?
+            {store ? (
               <Link
                 href={`/products?store_ids=${store.id}`}
                 className="line-clamp-1 inline-block text-base text-muted-foreground hover:underline"
               >
                 {store.name}
               </Link>
-            : null}
+            ) : null}
           </div>
 
           <Separator className="my-1.5" />
 
-          {guestEmail || session ?
+          {guestEmail || session ? (
             <AddToCartForm
               productId={productId}
               storeId={store.id}
               tAddToCart={t("store.product.addToCart")}
             />
-          : <ButtonLink
+          ) : (
+            <ButtonLink
               href="/sign-in"
               size="default"
               variant="secondary"
@@ -167,7 +164,7 @@ export default async function ProductPage({ params }: ProductPageProperties) {
             >
               {t("store.product.addToCart")}
             </ButtonLink>
-          }
+          )}
 
           <Separator className="mt-5" />
 
@@ -182,9 +179,9 @@ export default async function ProductPage({ params }: ProductPageProperties) {
                 {t("store.product.description")}
               </AccordionTrigger>
               <AccordionContent>
-                {product.description && product.description.length > 0 ?
-                  product.description
-                : `${t("store.product.noDescription")}`}
+                {product.description && product.description.length > 0
+                  ? product.description
+                  : `${t("store.product.noDescription")}`}
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -206,13 +203,11 @@ export default async function ProductPage({ params }: ProductPageProperties) {
             <p>product.name: {product.name}</p>
             <p>guestEmail: {guestEmail || "not set or not found in cookie"}</p>
           </div>
-          {store && otherProducts.length > 0 ?
-            <Separator />
-          : null}
+          {store && otherProducts.length > 0 ? <Separator /> : null}
         </>
       )}
 
-      {store && otherProducts.length > 0 ?
+      {store && otherProducts.length > 0 ? (
         <div className="overflow-hidden md:pt-6">
           <h2 className="line-clamp-1 flex-1 text-2xl font-bold">
             {t("store.product.moreProductsFrom", {
@@ -233,7 +228,7 @@ export default async function ProductPage({ params }: ProductPageProperties) {
             </div>
           </div>
         </div>
-      : null}
+      ) : null}
     </Shell>
   );
 }
