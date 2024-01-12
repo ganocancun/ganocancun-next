@@ -6,16 +6,9 @@
     "@cspell/dict-fullstack/cspell-ext.json",
     "@cspell/dict-markdown/cspell-ext.json",
     "@cspell/dict-npm/cspell-ext.json",
-    "@cspell/dict-de-de/cspell-ext.json",
-    "@cspell/dict-es-es/cspell-ext.json",
-    "@cspell/dict-fa-ir/cspell-ext.json",
-    "@cspell/dict-fr-fr/cspell-ext.json",
-    "@cspell/dict-it-it/cspell-ext.json",
-    "@cspell/dict-pl_pl/cspell-ext.json",
-    "@cspell/dict-tr-tr/cspell-ext.json",
-    "@cspell/dict-uk-ua/cspell-ext.json"
+    "@cspell/dict-es-es/cspell-ext.json"
   ],
-  "language": "de,en,es,fa,fr,it,pl,tr,uk",
+  "language": "es,en",
   "dictionaries": [],
   "ignoreWords": [],
   "ignorePaths": [

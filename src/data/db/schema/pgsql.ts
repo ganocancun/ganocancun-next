@@ -22,10 +22,9 @@ import type Stripe from "stripe";
 export const roleEnum = pgEnum("role", ["user", "admin"]);
 export const modeEnum = pgEnum("mode", ["buyer", "seller"]);
 export const categoryEnum = pgEnum("category", [
-  "accessories",
-  "furniture",
-  "clothing",
-  "tech",
+  "ganoexcel",
+  "ganocancun",
+  "general",
 ]);
 
 export const pgTable = pgTableCreator((name) => `acme_${name}`);
