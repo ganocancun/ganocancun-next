@@ -88,7 +88,9 @@
       "noDescription": "No description is available for this product.",
       "moreProductsFrom": "More products from {storeName}",
       "buyProductsFromOurStores": "Buy products from our stores",
-      "addToCart": "Add to cart"
+      "addToCart": "Add to cart",
+      "view-all": "View all",
+      "featured": "Featured"
     }
   },
   "common": {
@@ -176,12 +178,44 @@
     }
   },
   "landing": {
-    "about": "We aim to create the world's most feature-rich, global, and iconic Next.js starter. Explore the comprehensive list of features. Offering more than just code, it's a journey. It's stable and ready for production.",
+    "about": "Explore the Wellness Revolution with Gano Excel in Cancun. \nExperience the transformative power of Ganoderma Lucidum in our exclusive range of coffees and healthy products, available here in Cancun, the Riviera Maya and throughout Mexico.",
     "btn1-products-now": "Products Now",
     "btn1-sell": "Sell",
     "btn2-download": "Download",
     "btn2-starter": "Next.js Relivator Starter",
     "features": {
+      "1": {
+        "description": "Discover the benefits of Ganoderma Lucidum, an ancient mushroom known for its antioxidant and immune system-strengthening properties.",
+        "title": "The Power of Ganoderma"
+      },
+      "2": {
+        "description": "Try our Gano Café, a perfect fusion of gourmet coffee and Ganoderma Lucidum, offering exceptional flavor and health benefits.",
+        "title": "Gano Café: Flavor and Health"
+      },
+      "3": {
+        "description": "At Gano Excel we are dedicated to improving your well-being, offering high-quality products with natural ingredients and proven benefits.",
+        "title": "Gano Excel Commitment"
+      },
+      "4": {
+        "description": "As independent Gano Excel distributors in Cancun, we bring the best of health and wellness to your door.",
+        "title": "Gano Cancun: Your Distributor"
+      },
+      "5": {
+        "description": "Our range of products combines the best of nature with scientific innovations to boost your health and energy.",
+        "title": "Natural Wellbeing"
+      },
+      "6": {
+        "description": "Each Gano Excel product is designed to the highest quality standards, ensuring a superior experience with every use.",
+        "title": "Quality in Every Product"
+      },
+      "7": {
+        "description": "Join the Gano Excel community and transform your lifestyle with advice, products and ongoing support.",
+        "title": "Gano Lifestyle"
+      },
+      "8": {
+        "description": "Discover entrepreneurship opportunities with Gano Excel Cancun and grow personally and professionally.",
+        "title": "Expand your Horizons"
+      },
       "clock": {
         "description": "Maintain peak performance with Drizzle ORM, by switching MySQL and Postgres on-the-fly. Enjoy flexible deployment options, including Planetscale, Vercel, Railway, Neon, and more.",
         "title": "Database Integration: Robust and Versatile"
@@ -214,7 +248,7 @@
       "title": "Features"
     },
     "get-started": "Features",
-    "heading": "Build More Efficient, Engaging, and Profitable Online Stores: Relivator Empowers Your eCommerce with the Power of Next.js",
+    "heading": "Revitalize your Life with Gano Excel Cancun\n\nDiscover Health and Wellness in Every Cup",
     "meta": {
       "description": "Relivator built with Next.js",
       "title": "Relivator"
@@ -234,7 +268,10 @@
     "things": {
       "linkText": "Go to list"
     },
-    "title": "Discover the paramount tools for React, Next.js, and beyond. Tailored especially for you."
+    "title": "Discover the paramount tools for React, Next.js, and beyond. Tailored especially for you.",
+    "btn1-buy-now": "Buy now",
+    "interested-in": "Interested in Buying at Factory Price?",
+    "join-as": "Join as an Independent Distributor"
   },
   "LanguageSwitch": {
     "choose-language": "Language"

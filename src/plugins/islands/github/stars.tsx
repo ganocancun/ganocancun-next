@@ -1,19 +1,28 @@
 import React from "react";
 import {
+  Briefcase,
+  CheckCircle,
   Clock,
   Code,
+  Coffee,
   DollarSign,
   Files,
   LayoutDashboard,
+  Leaf,
+  MapPin,
   PlaneTakeoff,
   QrCode,
   Server,
+  Shield,
+  ShieldAlert,
   ShipWheel,
   ShoppingBag,
+  Sun,
   Text,
   ToggleRight,
   Train,
   TrainFront,
+  Users,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Balancer } from "react-wrap-balancer";
@@ -38,7 +47,7 @@ export async function GithubStarsPlugin() {
       {githubStars ? (
         <Link href={siteConfig.links.github} target="_blank" rel="noreferrer">
           <Badge
-            className="rounded-lg border-2 border-zinc-900/10 px-3.5 py-1.5 text-sm font-semibold lg:text-base dark:border-zinc-800"
+            className="rounded-lg border-2 border-zinc-900/10 px-3.5 py-1.5 text-sm font-semibold dark:border-zinc-800 lg:text-base"
             variant="outline"
           >
             <Icons.gitHub className="mr-2 h-3.5 w-3.5" aria-label="GitHub" />
@@ -98,11 +107,9 @@ export function OssFeaturesSection({
         as="p"
         className="mx-auto flex max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
       >
-        {githubStars && (
-          <Link href={REPOSITORY_URL}>
-            <span>{t("open-source.stars", { count: githubStars })}</span>
-          </Link>
-        )}{" "}
+        <Link href={REPOSITORY_URL}>
+          <span>{t("open-source.stars", { count: githubStars })}</span>
+        </Link>{" "}
         {t("title")} {t("open-source.subtitle.first")} {t("features.subtitle")}{" "}
         {t("subtitle")}
         <br />
@@ -136,44 +143,44 @@ export function Features() {
   return (
     <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
       <FeatureCard
-        title={t("features.files.roadmap")}
-        description={t("features.devtools.ambitions-description")}
-        icon={Clock}
+        title={t("features.1.title")}
+        description={t("features.1.description")}
+        icon={Leaf}
       />
       <FeatureCard
-        title={t("features.files.on-the-fly")}
-        description={t("features.files.on-the-fly-description")}
-        icon={PlaneTakeoff}
+        title={t("features.2.title")}
+        description={t("features.2.description")}
+        icon={Coffee}
       />
       <FeatureCard
-        title={t("features.cryptography.title")}
-        description={t("features.cryptography.description")}
-        icon={QrCode}
+        title={t("features.3.title")}
+        description={t("features.3.description")}
+        icon={CheckCircle}
       />
       <FeatureCard
-        title={t("features.text.title")}
-        description={t("features.text.description")}
-        icon={ToggleRight}
+        title={t("features.4.title")}
+        description={t("features.4.description")}
+        icon={MapPin}
       />
       <FeatureCard
-        title={t("features.files.title")}
-        description={t("features.files.description")}
-        icon={Files}
+        title={t("features.5.title")}
+        description={t("features.5.description")}
+        icon={Sun}
       />
       <FeatureCard
-        title={t("features.clock.title")}
-        description={t("features.clock.description")}
-        icon={Server}
+        title={t("features.6.title")}
+        description={t("features.6.description")}
+        icon={Shield}
       />
       <FeatureCard
-        title={t("features.currency.title")}
-        description={t("features.currency.description")}
-        icon={LayoutDashboard}
+        title={t("features.7.title")}
+        description={t("features.7.description")}
+        icon={Users}
       />
       <FeatureCard
-        title={t("features.devtools.title")}
-        description={t("features.devtools.description")}
-        icon={ShoppingBag}
+        title={t("features.8.title")}
+        description={t("features.8.description")}
+        icon={Briefcase}
       />
     </div>
   );

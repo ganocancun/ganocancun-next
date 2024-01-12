@@ -11,16 +11,16 @@ import pick from "lodash/pick";
 import type { AbstractIntlMessages } from "next-intl";
 import { NextIntlClientProvider } from "next-intl";
 
-import en_us from "~/data/i18n/en-us.json";
 import es_es from "~/data/i18n/es-es.json";
+import en_us from "~/data/i18n/en-us.json";
 import NotFoundContent from "~/islands/content/not-found-content";
 import { defaultLocale } from "~/navigation";
 
 // Create a mapping from locale identifiers
 // to the specific imported JSON modules
 const localeMessages = {
-  "en-us": en_us,
   "es-es": es_es,
+  "en-us": en_us,
 };
 
 export default function NotFoundPage() {

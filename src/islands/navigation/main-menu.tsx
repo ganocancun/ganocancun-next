@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import * as React from "react";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { type MainMenuItem } from "~/types";
@@ -54,6 +55,10 @@ export function MainMenu({ items }: MainMenuProps) {
                         className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                         href={siteConfig.company.link}
                       >
+                        {/* Aquí se añade el logotipo */}
+                        <Image src="/logo.png" alt={siteConfig.company.name} width={100} height={100} />
+
+
                         <div className="mb-2 mt-4 text-lg font-medium">
                           {siteConfig.name}
                         </div>

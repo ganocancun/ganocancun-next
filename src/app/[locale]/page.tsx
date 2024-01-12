@@ -48,30 +48,9 @@ export default function HomePage() {
           </Balancer>
 
           <div className="mt-3 flex flex-wrap items-center justify-center gap-4">
-            {env.DEV_DEMO_NOTES === "true" ?
-              <Link
-                href={REPOSITORY_URL}
-                size="lg"
-                target="_blank"
-                variant="secondary"
-              >
-                <Download className="mr-2 h-4 w-4" />
-                Download Starter
-              </Link>
-            : <Link href="/products" size="lg" variant="secondary">
-                <ShoppingCart className="mr-2 h-4 w-4" />
-                Buy Now
-              </Link>
-            }
-
-            <Link
-              className="border-2 border-zinc-900 dark:border-zinc-800"
-              href="/dashboard/billing"
-              size="lg"
-              variant="outline"
-            >
-              <Store className="mr-2 h-4 w-4" />
-              {env.DEV_DEMO_NOTES === "true" ? "Launch Demo" : "Sell Now"}
+            <Link href="/products" size="lg" variant="secondary">
+              <ShoppingCart className="mr-2 h-4 w-4" />
+              {t("landing.btn1-buy-now")}
             </Link>
           </div>
         </section>
@@ -98,7 +77,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {env.DEV_DEMO_NOTES === "true" && <Features />}
+        <Features />
 
         <section
           aria-labelledby="create-a-store-banner-heading"
@@ -106,10 +85,10 @@ export default function HomePage() {
           id="create-a-store-banner"
         >
           <div className="text-xl font-medium sm:text-2xl">
-            Do you want to sell your products?
+            {t("landing.interested-in")}
           </div>
           <Link href="/dashboard/stores" size="lg" variant="secondary">
-            Get Started
+            {t("landing.join-as")}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </section>

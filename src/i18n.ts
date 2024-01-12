@@ -2,14 +2,14 @@ import type { AbstractIntlMessages } from "next-intl";
 import { getRequestConfig } from "next-intl/server";
 
 // Import all the locale JSON files
-import en_us from "~/data/i18n/en-us.json";
 import es_es from "~/data/i18n/es-es.json";
+import en_us from "~/data/i18n/en-us.json";
 
 // Create a mapping from locale identifiers
 // to the specific imported JSON modules
 const localeMessages = {
-  "en-us": en_us,
   "es-es": es_es,
+  "en-us": en_us,
 };
 
 // Exporting default function that asynchronously receives
