@@ -32,6 +32,14 @@ import { Shell } from "~/islands/wrappers/shell-variants";
 import { Link, redirect } from "~/navigation";
 import { getServerAuthSession, getUserById } from "~/utils/auth/users";
 
+function renderTextWithLineBreaks(text) {
+  return text.split("\n").map((line, index) => (
+    <span key={index}>
+      {line}
+      <br />
+    </span>
+  ));
+}
 interface ProductPageProperties {
   params: {
     productId: string;
@@ -180,7 +188,7 @@ export default async function ProductPage({ params }: ProductPageProperties) {
               </AccordionTrigger>
               <AccordionContent>
                 {product.description && product.description.length > 0
-                  ? product.description
+                  ? renderTextWithLineBreaks(product.description)
                   : `${t("store.product.noDescription")}`}
               </AccordionContent>
             </AccordionItem>
