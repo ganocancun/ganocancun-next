@@ -162,7 +162,7 @@ export const products = pgTable("products", {
   storeId: integer("storeId").notNull().default(1),
   description: text("description"),
   images: json("images").$type<StoredFile[] | null>().default(null),
-  category: categoryEnum("category").notNull().default("clothing"),
+  category: categoryEnum("category").notNull().default("general"),
   subcategory: text("subcategory"),
   price: decimal("price", { precision: 10, scale: 2 }).notNull().default("0"),
   inventory: integer("inventory").notNull().default(0),
