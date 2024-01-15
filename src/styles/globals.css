@@ -39,7 +39,7 @@
     --card-foreground: 240, 5%, 96%; /* Blanco suave para texto en tarjetas en modo oscuro */
     --popover: 19, 20%, 22%; /* Gris muy oscuro para el fondo del menú en modo oscuro */
     --popover-foreground: 240, 5%, 96%; /* Blanco suave para texto del menú en modo oscuro */
-    --primary: 143, 35%, 45%; /* Verde suave para acentos primarios, botones */
+    --primary: 143, 35%, 55%; /* Verde suave para acentos primarios, botones */
     --primary-foreground: 240 5.9% 10%;
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
