@@ -13,12 +13,12 @@ import { Link } from "~/core/link";
 import { seo } from "~/data/meta";
 import { env } from "~/env.mjs";
 import { FeaturedStoreItems } from "~/islands/commerce/featured-store-items";
+import { Features } from "~/islands/features";
 import { HeroSection } from "~/islands/marketing/hero-section";
 import { SiteFooter } from "~/islands/navigation/site-footer";
 import { SiteHeader } from "~/islands/navigation/site-header";
 import { GeneralShell } from "~/islands/wrappers/general-shell";
 import { Link as NavLink } from "~/navigation";
-import { Features, GithubStarsPlugin } from "~/plugins/islands/github/stars";
 import { productCategories } from "~/server/config/products";
 
 export const metadata = seo({ title: `Home – ${siteConfig.name}` });
