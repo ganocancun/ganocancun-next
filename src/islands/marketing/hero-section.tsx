@@ -1,3 +1,5 @@
+import React from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Balancer } from "react-wrap-balancer";
 
@@ -6,49 +8,40 @@ import { typography } from "~/server/text";
 
 export function HeroSection() {
   const t = useTranslations("landing");
-
-  const technologies = [
-    { name: "Next.js 14", link: "https://nextjs.org/" },
-    { name: "i18n", link: "https://tailwindcss.com/" },
-    { name: "shadcn/ui", link: "https://ui.shadcn.com/" },
-    { name: "App Router", link: "https://nextjs.org/docs/app" },
-    { name: "TypeScript", link: "https://cutt.ly/CwjVPUNu" },
-    { name: "T3 Stack", link: "https://create.t3.gg/" },
-    { name: "Stripe", link: "https://stripe.com/" },
-    { name: "NextAuth.js", link: "https://authjs.dev/" },
-    { name: "Tailwind CSS", link: "https://tailwindcss.com/" },
-    { name: "TanStack", link: "https://tanstack.com/" },
-    { name: "Drizzle", link: "https://orm.drizzle.team/" },
-    { name: "Zod", link: "https://zod.dev/" },
-    { name: "RSC", link: "https://cutt.ly/WwjVDQDT" },
-    { name: "SWC", link: "https://swc.rs/" },
-    { name: "tRPC", link: "https://trpc.io/" },
-    { name: "Server Actions", link: "https://cutt.ly/awjVFfJg" },
-    { name: "Lucide Icons", link: "https://lucide.dev/" },
-  ];
-
-  const technologyLinks = technologies.map((tech, index) => (
-    <span key={tech.name}>
-      <Link
-        href={tech.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={typography.link}
-      >
-        {tech.name}
-      </Link>
-      {index < technologies.length - 1 ? ", " : ""}
-    </span>
-  ));
+  // Dividir el texto en líneas y mapear a elementos con saltos de línea
+  const headingLines = t("heading")
+    .split("\n\n")
+    .map((line, index) => (
+      <React.Fragment key={index}>
+        {index > 0 && <br />}
+        {line}
+      </React.Fragment>
+    ));
 
   return (
-    <>
-      <Balancer
-        as="h1"
-        className="mt-4 bg-gradient-to-br from-primary/60 from-10% via-primary/90 via-30% to-primary to-90% bg-clip-text font-heading text-2xl leading-[1.1] tracking-tighter text-transparent sm:text-2xl md:text-3xl xl:text-4xl dark:from-zinc-400 dark:via-zinc-300 dark:to-zinc-600"
-      >
-        <span className="block max-w-5xl">{t("heading")}</span>
-      </Balancer>
-    </>
+    <div className="relative h-[300px] w-full sm:h-[400px] lg:h-[500px]">
+      {" "}
+      {/* Ajusta la altura según necesites */}
+      <Image
+        src="/images/hero-home-240115.png" // Reemplaza con la ruta de tu imagen
+        alt="Descripción de la imagen"
+        layout="fill"
+        objectFit="cover"
+        quality={100}
+      />
+      {/* Capa de superposición con fondo tenue */}
+      <div className="absolute inset-0 flex items-center justify-center ">
+        {" "}
+        {/* Ajusta la opacidad según necesites */}
+        <Balancer
+          as="h1"
+          className="text-2xl leading-[1.4] tracking-tighter sm:text-2xl md:text-3xl xl:text-4xl" // Ajusta el estilo del texto según necesites
+        >
+          <span className="mx-auto my-4 inline-block max-w-4xl rounded-md bg-black/50 px-4 leading-normal text-white">
+            {headingLines}
+          </span>
+        </Balancer>
+      </div>
+    </div>
   );
 }

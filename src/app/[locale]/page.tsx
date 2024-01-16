@@ -3,6 +3,7 @@
  * @see https://github.com/blefnk/relivator#readme
  */
 
+import Image from "next/image";
 import { ArrowRight, Download, ShoppingCart, Store } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Balancer } from "react-wrap-balancer";
@@ -33,11 +34,9 @@ export default function HomePage() {
       <GeneralShell>
         <section
           aria-labelledby="hero-heading"
-          className="mx-auto mb-2 mt-8 flex w-full flex-col items-center justify-center gap-4 pt-10 text-center"
+          className="mx-auto mb-2 flex w-full flex-col items-center justify-center gap-4 pt-10 text-center"
           id="hero"
         >
-          <GithubStarsPlugin />
-
           <HeroSection />
 
           <Balancer
@@ -84,6 +83,15 @@ export default function HomePage() {
           className="mb-14 mt-10 grid place-items-center gap-6 bg-card px-6 text-center text-card-foreground"
           id="create-a-store-banner"
         >
+          <div className="relative h-[300px] w-full sm:h-[400px] lg:h-[500px]">
+            <Image
+              src="/images/hero-home-240115-2.png"
+              alt="Descripción de la imagen"
+              layout="fill"
+              objectFit="cover"
+              quality={100}
+            />
+          </div>
           <div className="text-xl font-medium sm:text-2xl">
             {t("landing.interested-in")}
           </div>
