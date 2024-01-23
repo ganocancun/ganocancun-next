@@ -54,6 +54,8 @@ export default function HomePage() {
           </div>
         </section>
 
+        <Features />
+
         <FeaturedStoreItems />
 
         <section
@@ -75,8 +77,6 @@ export default function HomePage() {
             ))}
           </div>
         </section>
-
-        <Features />
 
         <section
           aria-labelledby="create-a-store-banner-heading"

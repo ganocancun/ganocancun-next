@@ -22,6 +22,8 @@ export default withUt({
         full: "0 0 100%",
       },
       colors: {
+        success: "#0070f3",
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

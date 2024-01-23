@@ -37,6 +37,7 @@ const hostnames = [
   "res.cloudinary.com",
   "utfs.io",
   "www.gravatar.com",
+  "cdn.sanity.io",
 ];
 
 /** @type {import('next').NextConfig} */
