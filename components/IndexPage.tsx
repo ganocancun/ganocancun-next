@@ -23,7 +23,7 @@ export default function IndexPage(props: IndexPageProps) {
     <>
       <IndexPageHead settings={settings} />
 
-      <Layout preview={preview} loading={loading}>
+      <Layout preview={preview || false} loading={loading || false}>
         <Container>
           <BlogHeader title={title} description={description} level={1} />
           {heroPost && (

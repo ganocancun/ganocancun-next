@@ -53,7 +53,7 @@ export default async function PostPage({
   const client = getClient();
   const [settings, { post, morePosts }] = await Promise.all([
     getSettings(client),
-    getPostAndMoreStories(client, params.slug[0]),
+    getPostAndMoreStories(client, params.slug[0] || "default-slug"),
   ]);
   if (!post) {
     return <NotFoundMessage />;

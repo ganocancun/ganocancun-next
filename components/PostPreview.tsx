@@ -16,8 +16,8 @@ export default function PostPreview({
     <div className="p-1">
       <div className="mb-5">
         <CoverImage
-          slug={slug}
-          title={title}
+          slug={slug || "default-slug"}
+          title={title || "Default Title"}
           image={coverImage}
           priority={false}
         />
@@ -28,7 +28,7 @@ export default function PostPreview({
         </Link>
       </h3>
       <div className="mb-4 text-lg">
-        <Date dateString={date} />
+        <Date dateString={date || "Default Date"} />
       </div>
       {excerpt && <p className="mb-4 text-lg leading-relaxed">{excerpt}</p>}
       {author && <Avatar name={author.name} picture={author.picture} />}

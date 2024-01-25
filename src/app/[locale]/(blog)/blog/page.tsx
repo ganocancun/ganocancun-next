@@ -20,7 +20,7 @@ const [settings, posts = []] = await Promise.all([
   getAllPosts(client),
 ]);
 
-const descriptionPlainText = toPlainText(settings.description);
+const descriptionPlainText = toPlainText(settings.description || []);
 
 export const metadata: Metadata = {
   metadataBase: fullURL(),
