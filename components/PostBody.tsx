@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * This component uses Portable Text to render a post body.
  *
@@ -10,30 +12,31 @@
 import {
   PortableText,
   type PortableTextReactComponents,
-} from '@portabletext/react'
-import ReactPlayer from 'react-player'
-import styles from './PostBody.module.css'
-import { SanityImage } from './SanityImage'
+} from "@portabletext/react";
+import ReactPlayer from "react-player";
+
+import styles from "./PostBody.module.css";
+import { SanityImage } from "./SanityImage";
 
 // Serializadores para tipos de contenido específicos
 const myPortableTextComponents: Partial<PortableTextReactComponents> = {
   types: {
     image: ({ value }) => {
-      return <SanityImage {...value} />
+      return <SanityImage {...value} />;
     },
     youtube: ({ value }) => {
-      const { url } = value
-      return <ReactPlayer url={url} controls={true} />
-    }
+      const { url } = value;
+      return <ReactPlayer url={url} controls={true} />;
+    },
   },
-}
+};
 
 export default function PostBody({ content, youtube }) {
-  console.log('Content: ', youtube)
+  console.log("Content:", youtube);
   return (
     <div className={`mx-auto max-w-2xl ${styles.portableText}`}>
-      {youtube && <ReactPlayer url={youtube.url} controls={true}/>}
+      {youtube && <ReactPlayer url={youtube.url} controls={true} />}
       <PortableText value={content} components={myPortableTextComponents} />
     </div>
-  )
+  );
 }

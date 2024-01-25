@@ -1,7 +1,17 @@
+import NotFoundMessage from "components/NotFoundMessage";
+import {
+  getAllPostsSlugs,
+  getClient,
+  getPostAndMoreStories,
+  getSettings,
+} from "lib/sanity.client";
+
 import "~/styles/mdx.css";
 
 import { type Metadata } from "next";
 import { cn } from "~/utils";
+import PostBody from "components/PostBody";
+import PostHeader from "components/PostHeader";
 
 import { env } from "~/env.mjs";
 import { Icons } from "~/islands/icons";
@@ -35,7 +45,20 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function PostPage() {
+export default async function PostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const client = getClient();
+  const [settings, { post, morePosts }] = await Promise.all([
+    getSettings(client),
+    getPostAndMoreStories(client, params.slug[0]),
+  ]);
+  if (!post) {
+    return <NotFoundMessage />;
+  }
+  // console.log(post)
   return (
     <Shell as="article" variant="markdown">
       <Link
@@ -49,18 +72,22 @@ export default async function PostPage() {
         See all posts
       </Link>
       <div>
-        <div className="flex items-center space-x-2 text-sm text-muted-foreground"></div>
-        <h1 className="mt-2 inline-block text-4xl font-bold leading-tight lg:text-5xl">
-          Post
-        </h1>
+        <PostHeader
+          title={post.title}
+          coverImage={post.coverImage}
+          date={post.date}
+          author={post.author}
+        />
       </div>
 
       <Separator className="my-10" />
+
+      <PostBody content={post.content} />
+
       <div className="flex justify-center py-5">
         <Link href="/blog" className={cn(buttonVariants({ variant: "ghost" }))}>
           <Icons.chevronLeft className="mr-2 h-4 w-4" aria-hidden="true" />
-          See all posts
-          <span className="sr-only">See all posts</span>
+          See all posts<span className="sr-only">See all posts</span>
         </Link>
       </div>
     </Shell>

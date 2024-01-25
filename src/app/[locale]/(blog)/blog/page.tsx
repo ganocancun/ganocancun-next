@@ -1,10 +1,5 @@
 import { type Metadata } from "next";
 import { toPlainText } from "@portabletext/react";
-import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
-} from "@tanstack/react-query";
 import HeroPost from "components/HeroPost";
 import MoreStories from "components/MoreStories";
 import { getAllPosts, getClient, getSettings } from "lib/sanity.client";

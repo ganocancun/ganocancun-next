@@ -13,7 +13,7 @@ export default function PostPreview({
   slug,
 }: Omit<Post, "_id">) {
   return (
-    <div>
+    <div className="p-1">
       <div className="mb-5">
         <CoverImage
           slug={slug}
