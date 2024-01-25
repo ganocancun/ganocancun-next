@@ -123,32 +123,34 @@ export const siteConfig = {
       title: "Ganoderma",
       items: [
         {
-          title: "El Hongo de la Inmortalidad",
-          href: "/ganoderma-lucidum/hongo-la-inmortalidad",
-          description: "El Ganoderma Lucidum.",
-          items: [],
-        },
-        {
           title: "¿Qué es el Ganoderma Lucidum?",
-          href: "/ganoderma-lucidum/beneficios-del-ganoderma",
+          href: "/blog/beneficios-del-ganoderma",
           description: "Qué es y Cuáles son sus beneficios.",
           items: [],
         },
         {
+          title: "El Hongo de la Inmortalidad",
+          href: "/blog/hongo-la-inmortalidad",
+          description: "El Ganoderma Lucidum.",
+          items: [],
+        },
+
+        {
           title: "Ganoderma Lucidum",
-          href: "/ganoderma-lucidum/ganoderma-lucidum-dr-ruiz",
+          href: "/blog/ganoderma-lucidum-dr-ruiz",
           description: "Video Explicativo del Dr. Ruiz.",
           items: [],
         },
       ],
     },
     ...productCategories.map((category) => ({
-      title: category.title,
+      // title: category.title,
+      title: "Tienda",
       items: [
         {
-          title: "All",
+          title: "Todas",
           href: `/categories/${slugify(category.title)}`,
-          description: `All ${category.title}.`,
+          description: `Todo en ${category.title}.`,
           items: [],
         },
         ...category.subcategories.map((subcategory) => ({
@@ -159,6 +161,53 @@ export const siteConfig = {
         })),
       ],
     })),
+    {
+      title: "Testimonios",
+      items: [
+        {
+          title: "Superando la Cistitis Crónica",
+          href: "/blog/cistitis-cronica-3-anos-ganoderma-lucidum-gano-excel",
+          description:
+            "En el video, la protagonista comparte su experiencia de lucha contra una cistitis",
+          items: [],
+        },
+        {
+          title: "49 Testimonios Gano Excel",
+          href: "/blog/49-testimonios-gano-excel",
+          description: "",
+          items: [],
+        },
+        {
+          title: "Más de 80 Testimonios",
+          href: "/blog/80-testimonios-gano-excel",
+          description: "",
+          items: [],
+        },
+        {
+          title: "Artritis tratada con Ganoderma",
+          href: "/blog/testimonio-de-artritis-tratada-con-ganoderma",
+          description:
+            "Ella tenía artritis reumática y hoy después de 3 años de tomar el Ganoderma",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Negocio",
+      items: [
+        {
+          title: "Gano Excel",
+          href: "/blog/gano-excel",
+          description:
+            "Descubre Gano Excel: Una Historia de Innovación y Confianza",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Blog",
+      href: "/blog",
+    },
   ] satisfies MainMenuItem[],
   links,
   footerNav: [
