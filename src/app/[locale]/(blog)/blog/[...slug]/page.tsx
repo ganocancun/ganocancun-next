@@ -58,7 +58,6 @@ export default async function PostPage({
   if (!post) {
     return <NotFoundMessage />;
   }
-  // console.log(post)
   return (
     <Shell as="article" variant="markdown">
       <Link
@@ -78,16 +77,47 @@ export default async function PostPage({
           date={post.date}
           author={post.author}
         />
+        {/* Categorías */}
+        {post.categories && post.categories.length > 0 && (
+          <div className="flex items-center gap-2 mb-4">
+            <Icons.folder className="h-5 w-5" /> {/* Icono de categoría */}
+            {post.categories.map((category) => (
+              <Link
+                key={category.slug}
+                href={`/categoria/${category.slug}`}
+                className="text-blue-600 hover:underline"
+              >
+                {category.title}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
 
       <Separator className="my-10" />
 
       <PostBody content={post.content} />
 
+      {/* Tags */}
+      {post.tags && post.tags.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2 mb-4">
+          <Icons.tag className="h-5 w-5" /> {/* Icono de tag */}
+          {post.tags.map((tag) => (
+            <Link
+              key={tag.slug}
+              href={`/tag/${tag.slug}`}
+              className="text-blue-600 hover:underline"
+            >
+              {tag.title}
+            </Link>
+          ))}
+        </div>
+      )}
+
       <div className="flex justify-center py-5">
         <Link href="/blog" className={cn(buttonVariants({ variant: "ghost" }))}>
           <Icons.chevronLeft className="mr-2 h-4 w-4" aria-hidden="true" />
-          See all posts<span className="sr-only">See all posts</span>
+          Ver todos los posts<span className="sr-only">See all posts</span>
         </Link>
       </div>
     </Shell>
