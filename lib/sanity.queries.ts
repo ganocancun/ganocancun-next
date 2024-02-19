@@ -66,7 +66,7 @@ export interface Post {
   content?: any;
   categories?: any;
   tags?: any;
-  metadescription: string;
+  metadescription?: string;
 }
 
 export interface Settings {
