@@ -82,7 +82,7 @@ export const settings = {
 };
 
 export const siteConfig = {
-  name: "GanoCancún",
+  name: "Gano Excel Cancún",
   shortName: "GanoCancun",
   author: "Enrique Montes",
   description:
