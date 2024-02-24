@@ -3,8 +3,10 @@ import {
   getAllPostsSlugs,
   getClient,
   getPostAndMoreStories,
+  getPostBySlug,
   getSettings,
 } from "lib/sanity.client";
+import { urlForImage } from "lib/sanity.image";
 
 import "~/styles/mdx.css";
 
@@ -20,7 +22,25 @@ import { Separator } from "~/islands/primitives/separator";
 import { Shell } from "~/islands/wrappers/shell-variants";
 import { Link } from "~/navigation";
 
-export async function generateMetadata(): Promise<Metadata> {
+interface PostPageProperties {
+  params: {
+    slug: string;
+  };
+}
+
+export async function generateMetadata({
+  params,
+}: PostPageProperties): Promise<Metadata> {
+  const slug = params.slug;
+
+  const client = getClient();
+  const [post] = await Promise.all([
+    getPostBySlug(client, params.slug[0] || "default-slug"),
+  ]);
+  console.log(post);
+
+  if (!post) return {};
+
   const url = env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
   const ogUrl = new URL(`${url}/api/og`);
@@ -28,6 +48,9 @@ export async function generateMetadata(): Promise<Metadata> {
   ogUrl.searchParams.set("mode", "dark");
 
   return {
+    metadataBase: new URL(url),
+    title: post.title,
+    description: post.metadescription,
     openGraph: {
       type: "article",
       images: [
@@ -58,6 +81,7 @@ export default async function PostPage({
   if (!post) {
     return <NotFoundMessage />;
   }
+
   return (
     <Shell as="article" variant="markdown">
       <Link

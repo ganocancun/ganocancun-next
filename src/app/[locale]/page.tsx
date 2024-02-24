@@ -21,7 +21,7 @@ import { GeneralShell } from "~/islands/wrappers/general-shell";
 import { Link as NavLink } from "~/navigation";
 import { productCategories } from "~/server/config/products";
 
-export const metadata = seo({ title: `Inicio – ${siteConfig.name}` });
+export const metadata = seo({ title: `Bienestar – ${siteConfig.name}` });
 
 export default function HomePage() {
   // useTranslations works both on the server and client
