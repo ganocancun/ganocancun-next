@@ -31,31 +31,24 @@ interface PostPageProperties {
 export async function generateMetadata({
   params,
 }: PostPageProperties): Promise<Metadata> {
-  const slug = params.slug;
-
   const client = getClient();
   const [post] = await Promise.all([
     getPostBySlug(client, params.slug[0] || "default-slug"),
   ]);
-  console.log(post);
 
   if (!post) return {};
-
-  const url = env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-
-  const ogUrl = new URL(`${url}/api/og`);
-  ogUrl.searchParams.set("type", "Blog Post");
-  ogUrl.searchParams.set("mode", "dark");
+  const imageUrl = urlForImage(post.coverImage).height(630).width(1200).url();
+  console.log(imageUrl);
 
   return {
-    metadataBase: new URL(url),
+    metadataBase: new URL(env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"),
     title: post.title,
     description: post.metadescription,
     openGraph: {
       type: "article",
       images: [
         {
-          url: ogUrl.toString(),
+          url: imageUrl,
           width: 1200,
           height: 630,
         },
@@ -63,7 +56,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      images: [ogUrl.toString()],
+      images: [imageUrl],
     },
   };
 }
