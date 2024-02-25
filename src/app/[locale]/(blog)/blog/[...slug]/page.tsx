@@ -37,15 +37,27 @@ export async function generateMetadata({
   ]);
 
   if (!post) return {};
-  const imageUrl = urlForImage(post.coverImage).height(630).width(1200).url();
-  console.log(imageUrl);
 
+  const imageUrl = post.coverImage
+    ? urlForImage(post.coverImage).height(630).width(1200).url()
+    : "/og-image.png"; // Imagen por defecto
+  const description =
+    post.metadescription || post.excerpt || post.content?.slice(0, 165);
+
+  const categories = post.categories?.length
+    ? post.categories.map((category) => category.title)
+    : [];
+  const tags = post.tags?.length ? post.tags.map((tag) => tag.title) : [];
+  const keywords = [...categories, ...tags].join(", ");
   return {
     metadataBase: new URL(env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"),
     title: post.title,
-    description: post.metadescription,
+    description: description,
+    keywords,
     openGraph: {
       type: "article",
+      title: post.title,
+      description: description,
       images: [
         {
           url: imageUrl,
@@ -56,6 +68,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
+      title: post.title,
+      description: description,
       images: [imageUrl],
     },
   };
@@ -74,7 +88,6 @@ export default async function PostPage({
   if (!post) {
     return <NotFoundMessage />;
   }
-
   return (
     <Shell as="article" variant="markdown">
       <Link

@@ -84,7 +84,7 @@ export const settings = {
 export const siteConfig = {
   name: "Gano Excel Cancún",
   shortName: "GanoCancun",
-  author: "Enrique Montes",
+  author: "Gano Cancun",
   description:
     "Descubre Gano Excel en Cancún: líderes en productos de bienestar enriquecidos con Ganoderma Lucidum. Experimenta la fusión de salud y sabor tropical en nuestros cafés,  y suplementos nutricionales. ¡Eleva tu bienestar con Gano Excel Cancun!",
   company: {
