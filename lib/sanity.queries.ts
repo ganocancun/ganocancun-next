@@ -39,6 +39,27 @@ export const postAndMoreStoriesQuery = groq`
   }
 }`;
 
+export const allCategoriesQueryOld = groq`
+  *[_type == "category"] {
+    _id,
+    title,
+    slug.current as slug
+  }
+`;
+
+export const allCategoriesQuery = groq`
+  *[_type == "category"] {
+    _id,
+    title,
+    "slug": slug.current,
+    parentCategory->{
+      _id,
+      title,
+      "slug": slug.current,
+    }
+  }
+`;
+
 export const postSlugsQuery = groq`
 *[_type == "post" && defined(slug.current)][].slug.current
 `;
