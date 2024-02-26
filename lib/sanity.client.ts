@@ -43,11 +43,25 @@ export async function getAllPosts(client: SanityClient): Promise<Post[]> {
   return (await client.fetch(indexQuery)) || [];
 }
 
-export async function getAllCategories(
+export async function getAllCategoriesOld(
   client: SanityClient,
 ): Promise<{ _id: string; title: string; slug: string }[]> {
   const categories = await client.fetch(allCategoriesQuery);
   return categories || [];
+}
+
+type Category = {
+  _id: string;
+  title: string;
+  slug: string;
+  parentCategory?: Category | null; // Optional and nullable parentCategory
+};
+
+export async function getAllCategories(
+  client: SanityClient,
+): Promise<Category[]> {
+  const categories = await client.fetch(allCategoriesQuery);
+  return categories || []; // Return empty array if no categories found
 }
 
 export async function getAllPostsSlugs(): Promise<Pick<Post, "slug">[]> {
