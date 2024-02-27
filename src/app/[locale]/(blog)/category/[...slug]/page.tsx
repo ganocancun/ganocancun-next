@@ -32,12 +32,13 @@ export default async function CategoryPage({
   params: { slug?: string };
 }) {
   if (!params.slug) {
-    return <div>Categoría no encontrada</div>;
+    return <div>Categoría no definida</div>;
   }
-  const slug = params.slug ? params.slug![params.slug.length - 1] : "noslug";
+  const lastSlug = params.slug?.[params.slug.length - 1] ?? "noslug";
 
   const client = getClient();
-  const posts = await getPostsByCategory(client, slug);
+  // const posts = await getAllPosts(client);
+  const posts = await getPostsByCategory(client, lastSlug);
   const [heroPost, ...morePosts] = posts || [];
 
   return (

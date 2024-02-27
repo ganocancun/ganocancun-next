@@ -61,8 +61,8 @@ export async function getAllCategories(
 export async function getPostsByCategory(
   client: SanityClient,
   slug: string,
-): Promise<Post> {
-  return (await client.fetch(postsByCategoryQuery, { slug })) || ({} as any);
+): Promise<Post[]> {
+  return (await client.fetch(postsByCategoryQuery, { slug })) || [];
 }
 
 export async function getAllPostsSlugs(): Promise<Pick<Post, "slug">[]> {
