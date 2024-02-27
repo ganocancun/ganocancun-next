@@ -39,12 +39,10 @@ export const postAndMoreStoriesQuery = groq`
   }
 }`;
 
-export const allCategoriesQueryOld = groq`
-  *[_type == "category"] {
-    _id,
-    title,
-    slug.current as slug
-  }
+export const postsByCategoryQuery = groq`
+*[_type == "post" && references(*[_type == "category" && slug.current == $slug]._id)] | order(date desc, _updatedAt desc) {
+  ${postFields}
+}
 `;
 
 export const allCategoriesQuery = groq`

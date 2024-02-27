@@ -114,7 +114,7 @@ export default async function PostPage({
             {post.categories.map((category) => (
               <Link
                 key={category.slug}
-                href={`/categoria/${category.slug}`}
+                href={`/category/${category.slug}`}
                 className="text-blue-600 hover:underline"
               >
                 {category.title}

@@ -8,12 +8,6 @@ import {
 } from "lib/sanity.client";
 
 import { fullURL } from "~/data/meta/builder";
-import {
-  PageHeader,
-  PageHeaderDescription,
-  PageHeaderHeading,
-} from "~/islands/navigation/page-header";
-import { Button } from "~/islands/primitives/button";
 import { Separator } from "~/islands/primitives/separator";
 import { Shell } from "~/islands/wrappers/shell-variants";
 
