@@ -75,6 +75,26 @@ export async function generateMetadata({
   };
 }
 
+interface Category {
+  slug: string;
+  title: string;
+  parentCategory?: Category;
+}
+
+function buildCategoryHref(category: Category): string {
+  let href = "/category";
+  let currentCategory: Category | undefined = category;
+
+  const slugs: string[] = [];
+  while (currentCategory) {
+    slugs.unshift(currentCategory.slug);
+    currentCategory = currentCategory.parentCategory;
+  }
+
+  href += "/" + slugs.join("/");
+  return href;
+}
+
 export default async function PostPage({
   params,
 }: {
@@ -88,6 +108,7 @@ export default async function PostPage({
   if (!post) {
     return <NotFoundMessage />;
   }
+  console.log(post.categories);
   return (
     <Shell as="article" variant="markdown">
       <Link
@@ -111,15 +132,18 @@ export default async function PostPage({
         {post.categories && post.categories.length > 0 && (
           <div className="flex items-center gap-2 mb-4">
             <Icons.folder className="h-5 w-5" /> {/* Icono de categoría */}
-            {post.categories.map((category) => (
-              <Link
-                key={category.slug}
-                href={`/category/${category.slug}`}
-                className="text-blue-600 hover:underline"
-              >
-                {category.title}
-              </Link>
-            ))}
+            {post.categories.map((category) => {
+              const href = buildCategoryHref(category); // Construye el href para esta categoría
+              return (
+                <Link
+                  key={category.slug}
+                  href={href}
+                  className="text-blue-600 hover:underline"
+                >
+                  {category.title}
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>

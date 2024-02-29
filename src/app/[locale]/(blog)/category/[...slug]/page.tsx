@@ -1,10 +1,11 @@
 import { type Metadata } from "next";
 import { useRouter } from "next/router";
 import { toPlainText } from "@portabletext/react";
+import { Breadcrumbs } from "components/Breadcrumbs";
 import HeroPost from "components/HeroPost";
 import MoreStories from "components/MoreStories";
 import {
-  getAllPosts,
+  getCategoryBySlug,
   getClient,
   getPostsByCategory,
   getSettings,
@@ -37,14 +38,31 @@ export default async function CategoryPage({
   const lastSlug = params.slug?.[params.slug.length - 1] ?? "noslug";
 
   const client = getClient();
-  // const posts = await getAllPosts(client);
+  const category = await getCategoryBySlug(client, lastSlug);
   const posts = await getPostsByCategory(client, lastSlug);
   const [heroPost, ...morePosts] = posts || [];
+
+  // Preparar los breadcrumbs
+  const breadcrumbs = [
+    { label: "Inicio", href: "/" }, // Enlace a la página principal
+  ];
+
+  // Si la categoría tiene una categoría padre, añádela a los breadcrumbs
+  if (category.parentCategory) {
+    breadcrumbs.push({
+      label: category.parentCategory.title,
+      href: `/category/${category.parentCategory.slug}`, // Ajusta esta ruta según tu esquema de rutas
+    });
+  }
+
+  // Añadir la categoría actual a los breadcrumbs
+  breadcrumbs.push({ label: category.title, href: category.slug });
 
   return (
     <Shell className="md:pb-10">
       <PageHeader id="blog-header" aria-labelledby="blog-header-heading">
-        <PageHeaderHeading>{params.slug}</PageHeaderHeading>
+        <Breadcrumbs items={breadcrumbs} />
+        <PageHeaderHeading>{category.title}</PageHeaderHeading>
       </PageHeader>
       <Separator className="mb-2.5" />
       <section

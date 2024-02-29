@@ -16,8 +16,8 @@ import {
 // todo: src/islands/switchers/navigation-new-beta.tsx
 
 // Default locale for the application.
-export const defaultLocale = "en-us";
-// export const defaultLocale = "es-es" as const;
+// export const defaultLocale = "en-us";
+export const defaultLocale = "es-es" as const;
 
 // Supported locales.
 export const locales = ["es-es", "en-us"] as const;

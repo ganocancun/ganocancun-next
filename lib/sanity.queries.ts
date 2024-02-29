@@ -12,7 +12,16 @@ const postFields = groq`
   "author": author->{name, picture},
   "categories": categories[]->{
     title,
-    "slug": slug.current
+    "slug": slug.current,
+    "parentCategory": parentCategory->{
+      title,
+      "slug": slug.current,
+      "parentCategory": parentCategory->{
+        title,
+        "slug": slug.current
+        // Puedes seguir anidando más si es necesario, pero ten en cuenta la eficiencia
+      }
+    }
   },
   "tags": tags[]->{
     title,
@@ -56,6 +65,18 @@ export const allCategoriesQuery = groq`
       "slug": slug.current,
     }
   }
+`;
+
+export const categoryBySlugQuery = groq`
+*[_type == "category" && slug.current == $slug][0] {
+  _id,
+  title,
+  slug,
+  parentCategory->{
+    title,
+    "slug": slug.current
+  }
+}
 `;
 
 export const postSlugsQuery = groq`

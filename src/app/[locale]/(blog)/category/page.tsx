@@ -34,7 +34,8 @@ const descriptionPlainText = toPlainText(settings.description || []);
 export const metadata: Metadata = {
   metadataBase: fullURL(),
   title: "Categorías del Blog",
-  description: descriptionPlainText,
+  description:
+    "Descubre las Categorías de artículos que manejamos en el Blog de Gano Excel Cancún.",
 };
 
 export default function BlogPage() {
