@@ -108,7 +108,7 @@ export default async function PostPage({
   if (!post) {
     return <NotFoundMessage />;
   }
-  console.log(post.categories);
+
   return (
     <Shell as="article" variant="markdown">
       <Link
