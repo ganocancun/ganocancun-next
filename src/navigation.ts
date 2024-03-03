@@ -24,8 +24,17 @@ export const locales = ["es-es", "en-us"] as const;
 
 // Labels for each supported locale, used for displaying human-readable names.
 export const labels = {
-  "es-es": "Español",
+  "de-de": "German",
   "en-us": "English",
+  "es-es": "Spanish",
+  "fa-ir": "Persian",
+  "fr-fr": "French",
+  "hi-in": "Hindi",
+  "it-it": "Italian",
+  "pl-pl": "Polish",
+  "tr-tr": "Turkish",
+  "uk-ua": "Ukrainian",
+  "zh-cn": "Chinese",
 } as const;
 
 // Type representing valid locale strings.

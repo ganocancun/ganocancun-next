@@ -25,8 +25,8 @@ export type Locale = {
 // App locales with flags and human-readable labels
 // @see https://flagicons.lipis.dev (to find flags)
 export const locales: Locale[] = [
-  { code: "de-de", flag: "fi-de", label: "German" },
-  { code: "es-es", flag: "fi-es", label: "Español" },
+  { code: "en-us", flag: "fi-gb", label: "English" },
+  { code: "es-es", flag: "fi-es", label: "Spanish" },
 ];
 
 // First line of "locales" acts as default application locale code

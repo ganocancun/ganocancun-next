@@ -91,10 +91,10 @@ export const siteConfig = {
     name: "Ganoexcel Cancun",
     link: "https://ganocancun.com",
     email: "info@ganocancun.com",
-    twitter: "@el_ade",
+    twitter: "@ganocancun",
   },
   handles: {
-    twitter: "@el_ade",
+    twitter: "@ganocancun",
   },
   keywords: [
     "Gano Excel Cancun",
@@ -103,7 +103,7 @@ export const siteConfig = {
     "Café de bienestar Cancun",
     "Suplementos de salud Cancun",
     "Bienestar y nutrición Cancun",
-    "Gano café beneficios",
+    "Gano café beneficioss",
     "Gano Excel oportunidad de negocio",
     "Café saludable Cancun",
     "Mejora de salud natural Cancun",
@@ -280,8 +280,8 @@ export const siteConfig = {
           external: true,
         },
         {
-          title: "Github",
-          href: links.githubAccount,
+          title: "Facebook",
+          href: links.facebook,
           external: true,
         },
       ],

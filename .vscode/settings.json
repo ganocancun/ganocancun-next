@@ -15,7 +15,7 @@
     "containerClassName"
   ],
   "i18n-ally.sourceLanguage": "es-es",
-  "i18n-ally.displayLanguage": "en-us",
+  "i18n-ally.displayLanguage": "es-es",
   "i18n-ally.localesPaths": ["src/data/i18n"],
   "i18n-ally.enabledFrameworks": ["general", "react", "next-intl"],
   "files.trimTrailingWhitespace": true,

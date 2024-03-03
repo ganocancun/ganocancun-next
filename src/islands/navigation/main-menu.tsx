@@ -55,7 +55,7 @@ export function MainMenu({ items }: MainMenuProps) {
                         className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                         href={siteConfig.company.link}
                       >
-                        {/* Aquí se añade el logotipo */}
+{/* Aquí se añade el logotipo */}
                         <Image src="/logo.png" alt={siteConfig.company.name} width={100} height={100} />
 
 
@@ -123,7 +123,6 @@ export function MainMenu({ items }: MainMenuProps) {
             <nav className="hidden gap-6 md:flex">
               {items.map((item, index) => (
                 <Link
-                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                   key={index}
                   href={item.disabled ? "#" : item.href ?? "/default-path"}
                   className={cn(

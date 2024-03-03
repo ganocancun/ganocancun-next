@@ -1,9 +1,10 @@
+import deepmerge from "deepmerge";
 import type { AbstractIntlMessages } from "next-intl";
 import { getRequestConfig } from "next-intl/server";
 
+import en_us from "~/data/i18n/en-us.json";
 // Import all the locale JSON files
 import es_es from "~/data/i18n/es-es.json";
-import en_us from "~/data/i18n/en-us.json";
 
 // Create a mapping from locale identifiers
 // to the specific imported JSON modules
@@ -15,10 +16,18 @@ const localeMessages = {
 // Exporting default function that asynchronously receives
 // the locale object and returns the configuration object
 export default getRequestConfig(({ locale }) => {
+  // Load messages for the current locale
+  const primaryMessages: AbstractIntlMessages =
+    localeMessages[locale] || localeMessages["en-us"];
+
+  // Load messages for the fallback locale
+  const fallbackMessages: AbstractIntlMessages = localeMessages["en-us"];
+
+  // Merge primary locale messages with fallback locale messages
+  const messages = deepmerge(fallbackMessages, primaryMessages);
+
   // When using Turbopack we enable HMR for locale
   // This approach also works fine without --turbo
-  const messages: AbstractIntlMessages =
-    localeMessages[locale] || localeMessages["es-es"];
   return { messages };
 });
 

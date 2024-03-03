@@ -19,7 +19,7 @@ import { defaultLocale } from "~/navigation";
 // Create a mapping from locale identifiers
 // to the specific imported JSON modules
 const localeMessages = {
-  "es-es": es_es,
+    "es-es": es_es,
   "en-us": en_us,
 };
 

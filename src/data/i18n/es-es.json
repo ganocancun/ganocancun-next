@@ -160,7 +160,7 @@
     "about": "Explora la Revolución del Bienestar con Gano Excel en Cancún. Experimenta el poder transformador del Ganoderma Lucidum en nuestra exclusiva gama de cafés y productos saludables, disponibles aquí en Cancún, la Riviera Maya y en todo México.",
     "btn1-products-now": "Productos ahora",
     "btn1-sell": "Vender",
-    "btn1-buy-now": "Comprar Ahora",
+"btn1-buy-now": "Comprar Ahora",
     "btn2-download": "Download",
     "btn2-starter": "Next.js Relivator Starter",
     "features": {
@@ -707,7 +707,7 @@
     },
     "product": {
       "products": "Productos",
-      "featured": "Destacados",
+"featured": "Destacados",
       "noDescription": "No hay descripción disponible para este producto.",
       "description": "Descripción",
       "moreProductsFrom": "Más productos de {storeName}",
@@ -718,5 +718,41 @@
   },
   "contact": {
     "submit": "Entregar"
+  },
+  "faq": {
+    "1": {
+      "details": "Visite el archivo README.md en el repositorio de Relivator GitHub, donde siempre encontrará la información más actualizada sobre el proyecto junto con sencillas instrucciones de instalación.",
+      "summary": "¿Cómo puedo instalar todo y comenzar de inmediato?"
+    },
+    "2": {
+      "details": "La respuesta es simple: para evitar que saltes entre diferentes entrantes. \nDe hecho, puedes dejar de buscar ahora. \nCon Relivator, se te presentan posibilidades ilimitadas. \nPuedes crear cualquier cosa que desees; \nTodas las herramientas necesarias ya están preparadas, solo para usted.",
+      "summary": "¿Por qué debería elegir Relivator como mi iniciador de Next.js 14?"
+    },
+    "3": {
+      "details": "Desarrollar algo tan ambicioso como Relivator obviamente lleva mucho tiempo, especialmente porque el proyecto lo desarrolla principalmente una sola persona. \nEl desarrollo podría acelerarse significativamente mediante la contratación de desarrolladores adicionales. \nPor lo tanto, yo, @blefnk Nazarii Korniienko, estaría inmensamente agradecido a cualquiera que pudiera donar cualquier cantidad al proyecto. \nConsulte la página del repositorio para ver Patreon y otras plataformas también. \n¡Muchas gracias a todos de antemano!",
+      "summary": "¿Es posible acelerar el lanzamiento de Relivator v2.0?"
+    }
+  },
+  "demo": {
+    "aria-label-goto": "Ir a",
+    "launch": "Iniciar demostración"
+  },
+  "metadata": {
+    "title": {
+      "home": "Hogar"
+    }
+  },
+  "checkout": {
+    "CartDetails": "Detalles",
+    "Demo": "Se pueden utilizar datos de prueba: 4242424242424242 | \n12/34 | \n567",
+    "Description": "Pagar con los artículos de su carrito",
+    "EmptyCartDescription": "Agregue artículos a su carrito para pagar",
+    "EmptyCartHeading": "Tu carrito esta vacío",
+    "Pay": "Pagar",
+    "Title": "Verificar",
+    "backToCart": "Volver al carrito",
+    "backToCartSingle": "Atrás",
+    "notConnectedDescription": "El propietario de la tienda debe conectar su tienda a Stripe para aceptar pagos",
+    "notConnectedHeading": "La tienda no está conectada a Stripe"
   }
 }

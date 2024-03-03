@@ -3,25 +3,36 @@
  * @see https://github.com/blefnk/relivator#readme
  */
 
-import Image from "next/image";
+import type { Metadata } from "next";
 import { ArrowRight, Download, ShoppingCart, Store } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Balancer } from "react-wrap-balancer";
 
 import { REPOSITORY_URL, siteConfig } from "~/app";
 import { Link } from "~/core/link";
-import { seo } from "~/data/meta";
+import { fullURL } from "~/data/meta/builder";
+// import { seo } from "~/data/meta";
 import { env } from "~/env.mjs";
 import { FeaturedStoreItems } from "~/islands/commerce/featured-store-items";
 import { Features } from "~/islands/features";
 import { HeroSection } from "~/islands/marketing/hero-section";
 import { SiteFooter } from "~/islands/navigation/site-footer";
 import { SiteHeader } from "~/islands/navigation/site-header";
+import { FrequentlyAskedQuestions } from "~/islands/sections/questions";
 import { GeneralShell } from "~/islands/wrappers/general-shell";
 import { Link as NavLink } from "~/navigation";
+// import { Features, GithubStarsPlugin } from "~/plugins/islands/github/stars";
 import { productCategories } from "~/server/config/products";
+import Image from "next/image";
 
-export const metadata = seo({ title: `Bienestar – ${siteConfig.name}` });
+export async function generateMetadata({ params }) {
+  const t = await getTranslations();
+  const metadata: Metadata = {
+    title: `${t("metadata.title.home")} – ${siteConfig.name}`,
+  };
+  return metadata;
+}
 
 export default function HomePage() {
   // useTranslations works both on the server and client
@@ -37,6 +48,7 @@ export default function HomePage() {
           className="mx-auto mb-2 flex w-full flex-col items-center justify-center gap-4 pt-10 text-center"
           id="hero"
         >
+
           <HeroSection />
 
           <Balancer
@@ -47,10 +59,10 @@ export default function HomePage() {
           </Balancer>
 
           <div className="mt-3 flex flex-wrap items-center justify-center gap-4">
-            <Link href="/products" size="lg" variant="secondary">
-              <ShoppingCart className="mr-2 h-4 w-4" />
-              {t("landing.btn1-buy-now")}
-            </Link>
+                          <Link href="/products" size="lg" variant="secondary">
+                <ShoppingCart className="mr-2 h-4 w-4" />
+                {t("landing.btn1-buy-now")}
+                          </Link>
           </div>
         </section>
 
@@ -66,7 +78,7 @@ export default function HomePage() {
           <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
             {productCategories.map((category) => (
               <NavLink
-                aria-label={`Go to ${category.title}`}
+                aria-label={`${t("demo.aria-label-goto")} ${category.title}`}
                 href={`/categories/${category.title}`}
                 key={category.title}
               >
@@ -78,12 +90,16 @@ export default function HomePage() {
           </div>
         </section>
 
+
+
+        {/* <FrequentlyAskedQuestions /> */}
+
         <section
           aria-labelledby="create-a-store-banner-heading"
           className="mb-14 mt-10 grid place-items-center gap-6 bg-card px-6 text-center text-card-foreground"
           id="create-a-store-banner"
         >
-          <div className="relative h-[300px] w-full sm:h-[400px] lg:h-[500px]">
+<div className="relative h-[300px] w-full sm:h-[400px] lg:h-[500px]">
             <Image
               src="/images/hero-home-240115-2.png"
               alt="Descripción de la imagen"

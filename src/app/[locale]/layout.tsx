@@ -9,20 +9,23 @@
 import "~/styles/globals.css";
 
 import type { PropsWithChildren } from "react";
+import { type Metadata } from "next";
 import localFont from "next/font/local";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { ShowInfo } from "~/indicators-error";
 import type { LocaleLayoutParams, WithChildren } from "~/types";
 import { cn } from "~/utils";
+import { Flowbite, ThemeModeScript } from "flowbite-react";
 
 import { siteConfig } from "~/app";
 import { TRPC } from "~/core/trpc/react";
-import { seo } from "~/data/meta";
+// import { seo } from "~/data/meta";
 import { fullURL } from "~/data/meta/builder";
 import { ReactHotToasts } from "~/islands/application/overlays/notifications/react-hot-toast";
 import LoglibAnalytics from "~/islands/loglib-analytics";
 import AuthProvider from "~/islands/providers/auth-provider";
+import { customTheme } from "~/islands/providers/flowbite-theme";
 import { TailwindScreens } from "~/islands/providers/indicators/tailwind-indicator";
 import { NextThemesProvider } from "~/islands/providers/theme-provider";
 import { TooltipProvider } from "~/islands/providers/tooltip";
@@ -32,7 +35,8 @@ import { Room } from "~/plugins/million/islands/room";
 
 // Every page in the app will have this metadata, You can override it by
 // defining the `metadata` in the `page.tsx` or in children `layout.tsx`
-export const metadata = seo({
+// export const metadata = seo({
+export const metadata: Metadata = {
   metadataBase: fullURL(),
   title: {
     default: siteConfig.name,
@@ -86,7 +90,8 @@ export const metadata = seo({
   other: {
     "darkreader-lock": "true",
   },
-});
+};
+// });
 
 const fontSans = localFont({
   src: "../../styles/fonts/inter.woff2",
@@ -140,6 +145,9 @@ export default async function LocaleLayout({
   // theme, analytics, other providers, and more
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <ThemeModeScript />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
@@ -153,8 +161,10 @@ export default async function LocaleLayout({
             <TooltipProvider>
               <ZustandProvider>
                 <AuthProvider>
-                  <ShowInfo />
-                  {children}
+                  <Flowbite theme={{ theme: customTheme }}>
+                    <ShowInfo />
+                    {children}
+                  </Flowbite>
                 </AuthProvider>
               </ZustandProvider>
             </TooltipProvider>
