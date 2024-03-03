@@ -6,6 +6,7 @@ import { useSelectedLayoutSegment } from "next/navigation";
 import { type MainMenuItem } from "~/types";
 import { cn } from "~/utils";
 import { ActivitySquare } from "lucide-react";
+import { useTheme } from "next-themes";
 
 import { siteConfig } from "~/app";
 import {
@@ -26,6 +27,10 @@ interface MainMenuProps {
 export function MainMenu({ items }: MainMenuProps) {
   const segment = useSelectedLayoutSegment();
   const v2_main_menu_experimental = false;
+  const { theme } = useTheme(); // Obtiene el tema actual
+
+  // Decide qué imagen mostrar basado en el tema
+  const imageSrc = theme === "dark" ? "/logo-dark.png" : "/logo.png";
 
   return (
     <div className="hidden gap-6 lg:flex">
@@ -35,7 +40,7 @@ export function MainMenu({ items }: MainMenuProps) {
         className="hidden items-center space-x-2 lg:flex"
       >
         {/* <ActivitySquare className="h-6 w-6" /> */}
-        <Image src="/favicon-32x32.png" alt="Home" width={32} height={32} />
+        <Image src={imageSrc} alt="Home" width={32} height={32} />
         <span className="hidden font-heading font-bold lg:inline-block">
           {siteConfig.name}
         </span>
@@ -58,7 +63,7 @@ export function MainMenu({ items }: MainMenuProps) {
                       >
                         {/* Aquí se añade el logotipo */}
                         <Image
-                          src="/logo.png"
+                          src={imageSrc}
                           alt={siteConfig.company.name}
                           width={100}
                           height={100}
