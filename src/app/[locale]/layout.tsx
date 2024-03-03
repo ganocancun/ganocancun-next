@@ -144,8 +144,7 @@ export default async function LocaleLayout({
   // Render the layout with internationalization
   // theme, analytics, other providers, and more
   return (
-    // <html lang={locale} suppressHydrationWarning>
-    <html lang="es_ES">
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <ThemeModeScript />
       </head>

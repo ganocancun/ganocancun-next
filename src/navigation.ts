@@ -26,7 +26,7 @@ export const locales = ["es-es", "en-us"] as const;
 export const labels = {
   "de-de": "German",
   "en-us": "English",
-  "es-es": "Spanish",
+  "es-es": "Español",
   "fa-ir": "Persian",
   "fr-fr": "French",
   "hi-in": "Hindi",

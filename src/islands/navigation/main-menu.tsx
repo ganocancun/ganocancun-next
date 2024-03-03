@@ -1,7 +1,7 @@
 "use client";
 
-import Image from 'next/image';
 import * as React from "react";
+import Image from "next/image";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { type MainMenuItem } from "~/types";
 import { cn } from "~/utils";
@@ -34,14 +34,15 @@ export function MainMenu({ items }: MainMenuProps) {
         href="/"
         className="hidden items-center space-x-2 lg:flex"
       >
-        <ActivitySquare className="h-6 w-6" />
+        {/* <ActivitySquare className="h-6 w-6" /> */}
+        <Image src="/favicon-32x32.png" alt="Home" width={32} height={32} />
         <span className="hidden font-heading font-bold lg:inline-block">
           {siteConfig.name}
         </span>
       </Link>
       <NavigationMenu>
         <NavigationMenuList>
-          {items?.[0]?.items ?
+          {items?.[0]?.items ? (
             <NavigationMenuItem>
               <NavigationMenuTrigger className="h-auto">
                 {items[0].title}
@@ -55,9 +56,13 @@ export function MainMenu({ items }: MainMenuProps) {
                         className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                         href={siteConfig.company.link}
                       >
-{/* Aquí se añade el logotipo */}
-                        <Image src="/logo.png" alt={siteConfig.company.name} width={100} height={100} />
-
+                        {/* Aquí se añade el logotipo */}
+                        <Image
+                          src="/logo.png"
+                          alt={siteConfig.company.name}
+                          width={100}
+                          height={100}
+                        />
 
                         <div className="mb-2 mt-4 text-lg font-medium">
                           {siteConfig.name}
@@ -80,11 +85,11 @@ export function MainMenu({ items }: MainMenuProps) {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
-          : null}
+          ) : null}
           {items
             ?.filter((item) => item.title !== items[0]?.title)
             .map((item) =>
-              item?.items ?
+              item?.items ? (
                 <NavigationMenuItem key={item.title}>
                   <NavigationMenuTrigger className="h-auto capitalize">
                     {item.title}
@@ -103,7 +108,8 @@ export function MainMenu({ items }: MainMenuProps) {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-              : item.href && (
+              ) : (
+                item.href && (
                   <NavigationMenuItem key={item.title}>
                     <Link href={item.href} legacyBehavior passHref>
                       <NavigationMenuLink
@@ -116,10 +122,11 @@ export function MainMenu({ items }: MainMenuProps) {
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
-                ),
+                )
+              ),
             )}
 
-          {v2_main_menu_experimental && items?.length ?
+          {v2_main_menu_experimental && items?.length ? (
             <nav className="hidden gap-6 md:flex">
               {items.map((item, index) => (
                 <Link
@@ -127,9 +134,9 @@ export function MainMenu({ items }: MainMenuProps) {
                   href={item.disabled ? "#" : item.href ?? "/default-path"}
                   className={cn(
                     "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
-                    item.href?.startsWith(`/${segment}`) ?
-                      "text-foreground"
-                    : "text-foreground/60",
+                    item.href?.startsWith(`/${segment}`)
+                      ? "text-foreground"
+                      : "text-foreground/60",
                     item.disabled && "cursor-not-allowed opacity-80",
                   )}
                 >
@@ -137,7 +144,7 @@ export function MainMenu({ items }: MainMenuProps) {
                 </Link>
               ))}
             </nav>
-          : null}
+          ) : null}
         </NavigationMenuList>
       </NavigationMenu>
     </div>
