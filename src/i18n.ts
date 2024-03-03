@@ -18,10 +18,10 @@ const localeMessages = {
 export default getRequestConfig(({ locale }) => {
   // Load messages for the current locale
   const primaryMessages: AbstractIntlMessages =
-    localeMessages[locale] || localeMessages["en-us"];
+    localeMessages[locale] || localeMessages["es-es"];
 
   // Load messages for the fallback locale
-  const fallbackMessages: AbstractIntlMessages = localeMessages["en-us"];
+  const fallbackMessages: AbstractIntlMessages = localeMessages["es-es"];
 
   // Merge primary locale messages with fallback locale messages
   const messages = deepmerge(fallbackMessages, primaryMessages);
