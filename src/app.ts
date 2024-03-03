@@ -19,9 +19,9 @@ import { Icons } from "./islands/icons";
 // todo: parse this from clerk's dashboard instead of hardcoding it
 export const oauthProvidersClerk = [
   { name: "Google", strategy: "oauth_google", icon: "google" },
-  { name: "Discord", strategy: "oauth_discord", icon: "discord" },
+  // { name: "Discord", strategy: "oauth_discord", icon: "discord" },
   // { name: "Microsoft", strategy: "oauth_microsoft", icon: "microsoft" },
-  // { name: "Facebook", strategy: "oauth_facebook", icon: "facebook" },
+  { name: "Facebook", strategy: "oauth_facebook", icon: "facebook" },
   // { name: "Github", strategy: "oauth_github", icon: "gitHub" },
 ] satisfies {
   name: string;
