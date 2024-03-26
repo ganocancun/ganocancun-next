@@ -22,7 +22,8 @@
   "files.insertFinalNewline": true,
   "files.associations": {
     "*.ignore": "plaintext",
-    "*.txt": "plaintext"
+    "*.txt": "plaintext",
+    "plyconfig.json": "jsonc"
   },
   "editor.tabSize": 2,
   "eslint.format.enable": true,
