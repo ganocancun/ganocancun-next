@@ -2,75 +2,49 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Attach by Process ID",
-      "type": "node",
-      "request": "attach",
-      "processId": "${command:PickProcess}",
-      "restart": true
-    },
-    {
-      "name": "Launch Next.js",
+      "name": "Debug SST",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/node_modules/next/dist/bin/next",
-      "env": { "NODE_OPTIONS": "--inspect" },
-      "console": "internalConsole",
-      "sourceMaps": true,
-      "trace": true
-    },
-    {
-      "name": "Launch Next.js in Chrome",
-      "type": "chrome",
-      "request": "launch",
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}"
-    },
-    {
-      "name": "Launch Next.js in Edge",
-      "type": "msedge",
-      "request": "launch",
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}"
-    },
-    {
-      "name": "Launch All Jest Tests",
-      "type": "node",
-      "request": "launch",
-      "envFile": "${workspaceFolder}/.env",
-      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      "args": ["--runInBand"]
-    },
-    {
-      "name": "Launch Current Jest Test",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      "args": ["${relativeFile}"],
-      "console": "internalConsole",
-      "internalConsoleOptions": "openOnSessionStart"
-    },
-    {
-      "name": "Launch Ava Test (experimental)",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceFolder}/node_modules/ava/entrypoints/cli.mjs",
-      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ava",
-      "runtimeArgs": ["debug", "--break", "${file}"],
-      "skipFiles": ["<node_internals>/**/*.js"],
-      "outputCapture": "std",
-      "runtimeVersion": "20.10.0",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/sst",
+      "runtimeArgs": ["dev", "--increase-timeout"],
       "console": "integratedTerminal",
-      "env": { "NODE_OPTIONS": "--loader=tsx" }
-    }
-  ],
-  "compounds": [
-    {
-      "name": "Launch Next.js and Edge",
-      "configurations": ["Launch Next.js", "Launch Next.js in Edge"]
+      "skipFiles": ["<node_internals>/**"],
+      // sourceMapRenames helps with the loading spinner when debugging and viewing local variables
+      "sourceMapRenames": false,
+      "env": {
+        "AWS_PROFILE": "flo-ct-flo360"
+      }
     },
     {
-      "name": "Launch Next.js and Chrome",
-      "configurations": ["Launch Next.js", "Launch Next.js in Chrome"]
+      "name": "Debug Tests - Unit",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/sst",
+      "runtimeArgs": ["bind", "yarn", "\"jest\"", "\"--watch\"", "\"--config\"", "\"./jest.unit.config.cjs\"", "\"${input:scopeTestsFileName}\""],
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "AWS_PROFILE": "flo-ct-flo360"
+      },
+    },
+    {
+      "name": "Debug Tests - E2E",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/sst",
+      "runtimeArgs": ["bind", "yarn", "\"vitest\"", "\"--config\"", "\"./vitest.e2e.config.ts\"", "\"${input:scopeTestsFileName}\""],
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "AWS_PROFILE": "flo-ct-flo360"
+      },
+    },
+  ],
+  "inputs": [
+    {
+      "id": "scopeTestsFileName",
+      "type": "promptString",
+      "description": "Partial file name to scope test debugging to. ex. arena. Leave blank to run all tests.",
     }
   ]
 }
